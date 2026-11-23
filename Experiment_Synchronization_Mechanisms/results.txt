@@ -1,0 +1,39 @@
+EXPERIMENT: ANALYZE SYNCHRONIZATION MECHANISMS
+================================================
+
+Total shared increments: 10000000
+Thread counts tested: 1, 2, 4, 8
+
+MECHANISM COMPARISON RESULTS
+
+Threads: 1
+None     : 10000000 | Correct | 0.0058 s
+Critical : 10000000 | Correct | 0.1185 s
+Atomic   : 10000000 | Correct | 0.0664 s
+Lock     : 10000000 | Correct | 0.1120 s
+
+Threads: 2
+None     : 5001855  | Incorrect | 0.0065 s
+Critical : 10000000 | Correct   | 0.3488 s
+Atomic   : 10000000 | Correct   | 0.1007 s
+Lock     : 10000000 | Correct   | 0.2522 s
+
+Threads: 4
+None     : 6246105  | Incorrect | 0.0081 s
+Critical : 10000000 | Correct   | 0.3505 s
+Atomic   : 10000000 | Correct   | 0.1055 s
+Lock     : 10000000 | Correct   | 0.3138 s
+
+Threads: 8
+None     : 3936852  | Incorrect | 0.0136 s
+Critical : 10000000 | Correct   | 0.3459 s
+Atomic   : 10000000 | Correct   | 0.1125 s
+Lock     : 10000000 | Correct   | 0.2736 s
+
+EXPECTED CORRECT COUNT: 10000000
+
+CONCLUSION:
+The unsynchronized method is fast but produces incorrect results
+due to race conditions. Critical sections, atomic operations, and
+locks produce correct results. Atomic operations provide a good
+balance between correctness and performance.
