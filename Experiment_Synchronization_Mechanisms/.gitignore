@@ -1,0 +1,17 @@
+# Executable files
+race
+critical
+atomic
+barrier
+semaphore
+compare_sync
+
+# Object files
+*.o
+
+# Temporary and log files
+*.tmp
+*.log
+
+# Editor folders
+.vscode/
